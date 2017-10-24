@@ -1,9 +1,11 @@
 public class Crypto {
     public static void main(String[] args) {
-        String original = "aHel^l!!o Wo r ld";
+        String original = "where are the $vowels???!!!";
         int key = -2;
         int n = 5;
         original = encryptString(original, key, n);
+        String obified = obify(original);
+        System.out.println("obified --> " + obified);
         original = ungroupify(original);
         decryptString(original, key);
     }
@@ -15,6 +17,19 @@ public class Crypto {
         String pattern = "(\\W)";
         str = str.replaceAll(pattern, "");
         return str;
+    }
+
+    public static String obify(String str) {
+        String res = "";
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'A' || str.charAt(i) == 'E' || str.charAt(i) == 'I' || str.charAt(i) == 'O' || str.charAt(i) == 'U') {
+                res += "OB";
+                res += str.charAt(i);
+            } else {
+                res += str.charAt(i);
+            }
+        }
+        return res;
     }
 
     public static String caesarify(String str, int key) {
