@@ -1,13 +1,7 @@
 public class Crypto {
     public static void main(String[] args) {
         String original = "aHel^l!!o Wo r ld";
-        original = normalizeText(original);
-        System.out.println(original);
-        int key = -1;
-        original = caesarify(original, key);
-        System.out.println(original);
-        original = groupify(original, 5);
-        System.out.println(original);
+        encryptString(original, 2, 5);
     }
 
     public static String normalizeText(String str) {
@@ -49,6 +43,17 @@ public class Crypto {
             res += " ";
         }
         return res;
+    }
+
+    public static String encryptString(String original, int key, int n) {
+        original = normalizeText(original);
+        System.out.println(original);
+        original = caesarify(original, key);
+        System.out.println(original);
+        original = groupify(original, n);
+        System.out.println(original);
+
+        return original;
     }
 
 }
