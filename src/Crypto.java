@@ -6,6 +6,8 @@ public class Crypto {
         int key = -1;
         original = caesarify(original, key);
         System.out.println(original);
+        original = groupify(original, 5);
+        System.out.println(original);
     }
 
     public static String normalizeText(String str) {
@@ -18,8 +20,6 @@ public class Crypto {
     }
 
     public static String caesarify(String str, int key) {
-        System.out.println((int)str.charAt(0));
-        System.out.println((char)72);
         String res = "";
         for (int i = 0; i < str.length(); i++) {
             int j = (int) str.charAt(i);
@@ -30,6 +30,23 @@ public class Crypto {
                 k = 91 - (65 - k);
             }
             res += (char)k;
+        }
+        return res;
+    }
+
+    public static String groupify(String str, int n) {
+        if (str.length() % n > 0) {
+            int j = n - (str.length() % n);
+            for (int l = 0; l < j; l++) {
+                str += "x";
+            }
+            System.out.println(str);
+        }
+        String res = "";
+        for (int i = 0; i < str.length(); i+= n) {
+
+            res += str.substring(i, i + n);
+            res += " ";
         }
         return res;
     }
